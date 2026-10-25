@@ -92,7 +92,6 @@
   socket.on("connect", () => {
     connectionStatus.textContent = "Connected";
     if (currentRoom && usernameInput.value.trim()) {
-      // Rejoin the previous room after a brief connection interruption.
       joinRoom(usernameInput.value.trim(), currentRoom);
     } else {
       connectionStatus.textContent = "Ready to join";
@@ -182,6 +181,5 @@
     roomInput.focus();
   });
 
-  // Avoid showing a misleading joined state if the socket reconnects mid-join.
   socket.on("chat-error", (message) => setStatus(message, true));
 })();
